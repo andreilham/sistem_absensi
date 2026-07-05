@@ -14,17 +14,17 @@ LARAVEL_CSS = """
 
     /* Background gradient seperti Laravel */
     .stApp {
-        background: linear-gradient(to bottom, #eff6ff, #ffffff);
+        background: linear-gradient(135deg, #eff6ff 0%, #fafbfc 100%);
     }
 
     /* Header custom */
     .umb-header {
-        background: linear-gradient(90deg, #ffffff 0%, #eff6ff 100%);
+        background: linear-gradient(90deg, #ffffff 0%, #f0f9ff 100%);
         border: 1px solid #bfdbfe;
-        border-radius: 16px;
-        box-shadow: 0 8px 24px rgba(37, 99, 235, 0.12);
-        padding: 16px 24px;
-        margin: -1rem -1rem 1.5rem -1rem;
+        border-radius: 20px;
+        box-shadow: 0 12px 40px rgba(37, 99, 235, 0.15);
+        padding: 20px 28px;
+        margin: -1rem -1rem 2rem -1rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -65,7 +65,7 @@ LARAVEL_CSS = """
 
     /* Sidebar biru seperti admin Laravel */
     section[data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #1e3a8a 0%, #1d4ed8 100%) !important;
+        background: linear-gradient(180deg, #1e40af 0%, #1d4ed8 100%) !important;
     }
     section[data-testid="stSidebar"] * {
         color: #dbeafe !important;
@@ -74,9 +74,39 @@ LARAVEL_CSS = """
         color: #dbeafe !important;
     }
     section[data-testid="stSidebar"] .stButton>button {
-        background: #ffffff;
+        background: linear-gradient(90deg, #ffffff 0%, #eff6ff 100%);
         color: #1d4ed8;
         border: 1px solid #bfdbfe;
+        font-weight: 600;
+    }
+    
+    /* Card styling */
+    .umb-card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        padding: 20px;
+        margin-bottom: 16px;
+        border: 1px solid #f0f0f0;
+    }
+    
+    /* Info boxes */
+    [data-testid="stMetricValue"] {
+        font-size: 2.5rem !important;
+        font-weight: 700 !important;
+        color: #1d4ed8 !important;
+    }
+    
+    /* Buttons lebih bagus */
+    [data-testid="stButton"] button {
+        border-radius: 10px;
+        font-weight: 600;
+        padding: 10px 20px !important;
+        background: linear-gradient(90deg, #1d4ed8 0%, #2563eb 100%) !important;
+        border: none !important;
+    }
+    [data-testid="stButton"] button:hover {
+        background: linear-gradient(90deg, #1e40af 0%, #1d4ed8 100%) !important;
     }
 </style>
 """
