@@ -41,27 +41,34 @@ sistem absensi/
 
 ## Cara Menjalankan
 
-### 1. Laravel (Sistem Utama)
+### Jalankan dari folder utama
+- Laravel: `php artisan serve` dari folder `app-temp`
+- Streamlit: `python -m streamlit run python-ai/app.py` dari folder utama proyek
 
+### Cara Mudah (Windows)
+
+Double-click file:
+- **`jalankan-laravel.bat`** → http://127.0.0.1:8000
+- **`jalankan-streamlit.bat`** → http://127.0.0.1:8501
+
+> Jalankan **keduanya** bersamaan!
+
+### Manual
+
+**Laravel:**
 ```powershell
 cd "C:\xampp\htdocs\sistem absensi\app-temp"
 C:\xampp\php\php.exe artisan serve
 ```
 
-Buka: http://127.0.0.1:8000
-
-### 2. Python/Streamlit (Sistem Cerdas)
-
+**Streamlit:**
 ```powershell
 cd "C:\xampp\htdocs\sistem absensi\python-ai"
 pip install -r requirements.txt
-copy .env.example .env
-streamlit run app.py
+python -m streamlit run app.py
 ```
 
-Buka: http://127.0.0.1:8501
-
-> **Penting:** Jalankan keduanya bersamaan. Streamlit membaca/menulis data via API Laravel.
+> ⚠️ Gunakan `python -m streamlit run app.py` (bukan `streamlit run`) jika perintah streamlit tidak dikenali.
 
 ## Login Admin
 

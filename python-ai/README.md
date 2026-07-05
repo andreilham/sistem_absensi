@@ -19,7 +19,7 @@ copy .env.example .env   # Windows
 # 4. Sesuaikan .env (database & URL Laravel)
 
 # 5. Jalankan
-streamlit run app.py
+python -m streamlit run app.py
 ```
 
 Buka browser: http://127.0.0.1:8501
@@ -61,4 +61,4 @@ python-ai/
 |---------|--------|
 | Gagal koneksi database | Pastikan MySQL XAMPP aktif & `.env` benar |
 | Gagal kirim absensi | Pastikan Laravel jalan di port 8000 |
-| Model AI error | Cek path `MODEL_PATH` mengarah ke `app-temp/public/models` |
+| Model AI error | Cek path `MODEL_URL` dan `METADATA_URL` mengarah ke `SistemAbsensi` di folder publik Laravel |

@@ -22,11 +22,12 @@ DB_PASSWORD = os.getenv("DB_PASSWORD", "")
 DB_NAME = os.getenv("DB_NAME", "absensi_wajah")
 
 # --- Pengaturan Laravel API ---
-LARAVEL_URL = os.getenv("LARAVEL_URL", "http://127.0.0.1:8000")
+LARAVEL_URL = os.getenv("LARAVEL_URL", "http://127.0.0.1:8000").rstrip("/")
 API_KEY = os.getenv("API_KEY", "absensi-umb-2026")
 
-# --- Pengaturan Model AI ---
-MODEL_PATH = Path(os.getenv("MODEL_PATH", BASE_DIR.parent / "app-temp" / "public" / "models"))
+# URL model AI (diakses browser via Laravel public/)
+MODEL_URL = os.getenv("MODEL_URL", f"{LARAVEL_URL}/SistemAbsensi/model.json")
+METADATA_URL = os.getenv("METADATA_URL", f"{LARAVEL_URL}/SistemAbsensi/metadata.json")
 
 # --- Pengaturan Scan Wajah ---
 MIN_CONFIDENCE = float(os.getenv("MIN_CONFIDENCE", "70"))

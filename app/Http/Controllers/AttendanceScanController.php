@@ -18,8 +18,8 @@ class AttendanceScanController extends Controller
 
         return view('attendance.scan', [
             'activeJadwal' => $activeJadwal,
-            'modelUrl' => asset('models/model.json'),
-            'metadataUrl' => asset('models/metadata.json'),
+            'modelUrl' => asset('SistemAbsensi/model.json'),
+            'metadataUrl' => asset('SistemAbsensi/metadata.json'),
         ]);
     }
 

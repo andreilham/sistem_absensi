@@ -2,72 +2,65 @@
 Sistem Absensi Wajah - Sistem Cerdas (Python + Streamlit)
 Universitas Maju Bersama
 
-Jalankan dengan: streamlit run app.py
+Jalankan: python -m streamlit run app.py
 """
 
 import streamlit as st
+
+from utils.ui import render_header
 
 st.set_page_config(
     page_title="Sistem Cerdas Absensi",
     page_icon="🎓",
     layout="wide",
+    initial_sidebar_state="expanded",
 )
 
-st.title("🎓 Sistem Cerdas Absensi Wajah")
+render_header()
+
+st.markdown("### Selamat Datang di Sistem Cerdas")
 st.markdown("""
-Selamat datang di **Sistem Cerdas** untuk absensi mahasiswa.
+Modul **Python + Streamlit** untuk fitur AI absensi mahasiswa.
+Terintegrasi dengan **Laravel** sebagai sistem utama, dengan model Teachable Machine yang sama.
 
-Aplikasi ini dibangun dengan **Python + Streamlit** dan terintegrasi dengan
-**Laravel** sebagai sistem utama manajemen data.
-
-### 📌 Menu yang Tersedia
-
-Gunakan sidebar di kiri untuk membuka halaman:
-
-| Menu | Fungsi |
-|------|--------|
-| **Scan Wajah** | Pengenalan wajah dengan AI (Teachable Machine) |
-| **Analisis Kehadiran** | Grafik dan statistik kehadiran mahasiswa |
-| **Prediksi Risiko** | Prediksi mahasiswa berisiko tidak hadir |
-
-### 🏗️ Arsitektur Sistem
-
-```
-┌─────────────────┐     API      ┌─────────────────┐
-│  Python/Streamlit│ ──────────► │     Laravel      │
-│  (Sistem Cerdas) │             │  (Sistem Utama)  │
-└─────────────────┘             └─────────────────┘
-        │                                  │
-        └────────── MySQL Database ────────┘
-```
-
-### ⚙️ Cara Menjalankan
-
-```bash
-cd python-ai
-pip install -r requirements.txt
-copy .env.example .env
-streamlit run app.py
-```
-
-> **Catatan:** Pastikan Laravel sudah berjalan di `http://127.0.0.1:8000`
-> dan database MySQL sudah aktif.
+**Pilih menu di sidebar kiri:**
+- **Scan Wajah** — pengenalan wajah AI (Teachable Machine)
+- **Analisis Kehadiran** — grafik statistik kehadiran
+- **Prediksi Risiko** — deteksi mahasiswa berisiko tidak hadir
 """)
 
-st.info("👈 Pilih menu di sidebar untuk memulai.")
+col1, col2 = st.columns(2)
+with col1:
+    st.info("🌐 **Laravel** (port 8000)\n\nAdmin panel, CRUD data, database, dan halaman absensi")
+with col2:
+    st.info("🤖 **Streamlit** (port 8501)\n\nAI scan wajah, analisis, dan prediksi risiko")
 
-# Tampilkan info jadwal aktif jika database tersedia
-try:
-    from utils.database import get_jadwal_aktif
+# Cek koneksi database & Laravel
+st.divider()
+st.subheader("Status Koneksi")
 
-    jadwal = get_jadwal_aktif()
-    if jadwal:
-        st.success(
-            f"📚 Jadwal aktif: **{jadwal['mata_kuliah']}** "
-            f"({jadwal['kelas']}) · "
-            f"{str(jadwal['jam_mulai'])[:5]} - {str(jadwal['jam_selesai'])[:5]}"
-        )
-    else:
-        st.warning("Tidak ada jadwal kuliah aktif saat ini.")
-except Exception as e:
-    st.error(f"Tidak dapat terhubung ke database: {e}")
+col_a, col_b = st.columns(2)
+
+with col_a:
+    try:
+        from utils.database import get_jadwal_aktif
+        jadwal = get_jadwal_aktif()
+        st.success("✅ Database MySQL terhubung")
+        if jadwal:
+            st.caption(f"Jadwal aktif: {jadwal['mata_kuliah']}")
+    except Exception as e:
+        st.error(f"❌ Database: {e}")
+        st.caption("Pastikan MySQL XAMPP aktif & file .env benar")
+
+with col_b:
+    try:
+        import requests
+        from utils.config import LARAVEL_URL
+        r = requests.get(LARAVEL_URL, timeout=5)
+        if r.status_code == 200:
+            st.success(f"✅ Laravel terhubung ({LARAVEL_URL})")
+        else:
+            st.warning(f"⚠️ Laravel status {r.status_code}")
+    except Exception as e:
+        st.error(f"❌ Laravel: {e}")
+        st.caption("Jalankan: php artisan serve di folder app-temp")
