@@ -50,15 +50,11 @@ class MahasiswaSeeder extends Seeder
         ]);
 
         $labels = [
-            ['nama' => 'Yahya', 'nim' => '2211501001', 'face_label' => 'yahya'],
-            ['nama' => 'Timbul', 'nim' => '2211501002', 'face_label' => 'timbul'],
-            ['nama' => 'Samhan', 'nim' => '2211501003', 'face_label' => 'samhan'],
-            ['nama' => 'Nino Restu', 'nim' => '2211501004', 'face_label' => 'Nino Restu'],
-            ['nama' => 'Anggita Ari Nugroho', 'nim' => '2211501005', 'face_label' => 'Anggita Ari Nugroho'],
-            ['nama' => 'Alfian Putra', 'nim' => '2211501006', 'face_label' => 'Alfian putra'],
-            ['nama' => 'Pradigdya Rafly', 'nim' => '2211501007', 'face_label' => 'Pradigdya Rafly'],
-            ['nama' => 'Basri Nur', 'nim' => '2211501008', 'face_label' => 'Basri Nur'],
-            ['nama' => 'Oktabian', 'nim' => '2211501009', 'face_label' => 'oktabian'],
+            ['nama' => 'Zayyan', 'nim' => '2211501001', 'face_label' => 'zayyan'],
+            ['nama' => 'Andre', 'nim' => '2211501002', 'face_label' => 'andre'],
+            ['nama' => 'Adit', 'nim' => '2211501003', 'face_label' => 'adit'],
+            ['nama' => 'Ahdan', 'nim' => '2211501004', 'face_label' => 'ahdan'],
+            ['nama' => 'Ubay', 'nim' => '2211501005', 'face_label' => 'ubay'],
         ];
 
         foreach ($labels as $m) {
